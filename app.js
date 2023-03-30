@@ -29,18 +29,30 @@ app.get('/login', (req, res) => {
     res.render('login')
 })
 
+const shranjen_mail = "manica@maver.si" 
+const shranjeno_geslo = "slovenscina123"
+
 app.post('/podatki', (req, res) => {
     var mail = req.body.mail
     var geslo = req.body.geslo
 
-    // Ce geslo vsebuje manj kot 6 znakov vrni napako
-    if (geslo.length < 6) {
+    if (mail != shranjen_mail) {
         res.render('login', {
             napaka: true,
-            sporocilo: "Geslo vsebuje manj kot 6 znakov"
+            sporocilo: "Račun ne obstaja. Preveri mail"
         })
+    } else {
+        if (geslo != shranjeno_geslo) {
+            res.render('login', {
+                napaka: true, 
+                sporocilo: "Geslo ni pravilno"
+            })
+        } else {
+            res.render('index', {
+                mail: mail
+            })
+        }
     }
-
 })
 
 app.listen(3000, () => {
