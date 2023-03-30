@@ -3,7 +3,7 @@ const app = express()
 const expbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({extended: false}))
-app.engine('handlebars', expbs.engine({defaultLayout: false}))
+app.engine('handlebars', expbs.engine({defaultLayout: "main"}))
 app.set('view engine', 'handlebars')
 
 var cors = require('cors')
@@ -26,7 +26,10 @@ app.get('/', (req, res) => {
 })
 
 app.get('/login', (req, res) => {
-    res.render('login')
+    res.render('login', {
+        style: "style.css"
+    })
+   
 })
 
 const shranjen_mail = "manica@maver.si" 

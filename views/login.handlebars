@@ -1,8 +1,4 @@
-<html>
-    <head>
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body>
+
         
         <h1>To je login</h1>
 
@@ -10,10 +6,8 @@
             <h2>{{sporocilo}}</h2>
         {{/if}}
         
-        <form action="http://localhost:3000/podatki" method="post">
-            <input type="email" name="mail" placeholder="Vnesi mail">
-            <input type="password" name="geslo" placeholder="Vnesi geslo">
-            <button type="submit">Login</button>
-        </form>
-    </body>
-</html>
+<form action="http://localhost:3000/podatki" method="post">
+    <input type="email" name="mail" placeholder="Vnesi mail">
+    <input type="password" name="geslo" placeholder="Vnesi geslo">
+    <button class="btn btn-primary" type="submit">Login</button>
+</form>
