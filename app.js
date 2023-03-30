@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 
 app.get('/login', (req, res) => {
     res.render('login', {
-        style: "style.css"
+        css: "style.css"
     })
    
 })
