@@ -4,6 +4,7 @@ const expbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 
 app.use(bodyParser.urlencoded({extended: false}))
+
 app.engine('handlebars', expbs.engine({defaultLayout: "main"}))
 app.set('view engine', 'handlebars')
 
@@ -22,7 +23,8 @@ app.get('/', (req, res) => {
     }
 
     res.render('index', {
-        oseba: oseba
+        oseba: oseba,
+        css: "style.css"
     })
 })
 
@@ -58,6 +60,48 @@ app.post('/podatki', (req, res) => {
         }
     }
 })
+
+app.get('/login2', (req, res) => {
+    res.render('login2')
+})
+
+var vsiMaili = ["fabio@sluga.it", "manica@slo.si", "igor@cok.it",
+                "knjiznjicarka@knjiga.it", "a@b.com"]
+
+var vsaGesla = ["enciklopedija", "iLoveSlo", "promessiSposi", 
+                "knjige104", "12345678"]
+
+app.post('/fabio', (req, res) => {
+    var mail = req.body.mail
+    var geslo = req.body.geslo
+
+    console.log(mail, geslo)
+
+    if (vsiMaili.includes(mail)) {
+        var index = vsiMaili.indexOf(mail)
+        console.log(index)
+
+        if (geslo == vsaGesla[index]) {
+            console.log("Geslo je pravilno")
+        } else {
+            console.log("Geslo JE NAPACNO")
+        }
+
+    }
+
+   
+})
+
+
+
+
+
+
+
+
+
+
+
 
 app.listen(3000, () => {
     console.log("Dela")
