@@ -82,11 +82,25 @@ app.post('/fabio', (req, res) => {
         console.log(index)
 
         if (geslo == vsaGesla[index]) {
-            console.log("Geslo je pravilno")
+            res.render('home', {
+                mail: mail
+            })
         } else {
-            console.log("Geslo JE NAPACNO")
+            res.render('login2', {
+                napaka: true,
+                sporocilo: "Geslo ni pravilno"
+            })
         }
 
+    } else {
+        
+        res.render('login2', {
+            napaka: true,
+            sporocilo: "Mail ne obstaja"
+        })
+        
+        
+        console.log("Mail ne obstaja")
     }
 
    
